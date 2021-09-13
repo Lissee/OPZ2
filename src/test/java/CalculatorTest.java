@@ -29,6 +29,12 @@ public class CalculatorTest {
         assertEquals(1, calculator.getValuesStack().size());
         assertEquals(-1, calculator.getStackItem(0), 0);
 
+        
+        // sum
+        calculator.eval("clear");
+        calculator.eval("2 2 +");
+        assertEquals(1, calculator.getValuesStack().size());
+        assertEquals(2 + 2, calculator.getStackItem(0), 0);
 
         // division
         calculator.eval("clear");
