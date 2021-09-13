@@ -6,55 +6,55 @@ import static org.junit.Assert.assertEquals;
 
 public class CalculatorTest {
     
-@Test
-public void testAritmeticOperators() throws Exception {
-Calculator calculator = new Calculator();
+    @Test
+    public void testAritmeticOperators() throws Exception {
+        Calculator calculator = new Calculator();
 
-calculator.eval("5 2");
-assertEquals(5, calculator.getValuesStack().get(0), 0);
-assertEquals(2, calculator.getStackItem(1), 0);
+        calculator.eval("5 2");
+        assertEquals(5, calculator.getValuesStack().get(0), 0);
+        assertEquals(2, calculator.getStackItem(1), 0);
 
-calculator.eval("clear");
-calculator.eval("5 2 -");
-assertEquals(1, calculator.getValuesStack().size());
-assertEquals(5 - 2, calculator.getStackItem(0), 0);
-calculator.eval("3 -");
-assertEquals(1, calculator.getValuesStack().size());
-assertEquals(0, calculator.getStackItem(0), 0);
+        calculator.eval("clear");
+        calculator.eval("5 2 -");
+        assertEquals(1, calculator.getValuesStack().size());
+        assertEquals(5 - 2, calculator.getStackItem(0), 0);
+        calculator.eval("3 -");
+        assertEquals(1, calculator.getValuesStack().size());
+        assertEquals(0, calculator.getStackItem(0), 0);
 
-calculator.eval("clear");
-calculator.eval("1 2 3 4 5 *");
-assertEquals(4, calculator.getValuesStack().size());
-calculator.eval("clear 3 4 -");
-assertEquals(1, calculator.getValuesStack().size());
-assertEquals(3 - 4, calculator.getStackItem(0), 0);
+        calculator.eval("clear");
+        calculator.eval("1 2 3 4 5 *");
+        assertEquals(4, calculator.getValuesStack().size());
+        calculator.eval("clear 3 4 -");
+        assertEquals(1, calculator.getValuesStack().size());
+        assertEquals(3 - 4, calculator.getStackItem(0), 0);
 
-// sum
-calculator.eval("clear");
-calculator.eval("2 2 +");
-assertEquals(1, calculator.getValuesStack().size());
-assertEquals(2 + 2, calculator.getStackItem(0), 0);
+    // sum
+        calculator.eval("clear");
+        calculator.eval("2 2 +");
+        assertEquals(1, calculator.getValuesStack().size());
+        assertEquals(2 + 2, calculator.getStackItem(0), 0);
 
-// division
-calculator.eval("clear");
-calculator.eval("7 12 2 /");
-assertEquals(7, calculator.getStackItem(0), 0);
-assertEquals(6, calculator.getStackItem(1), 0);
-calculator.eval("*");
-assertEquals(1, calculator.getValuesStack().size());
-assertEquals(42, calculator.getStackItem(0), 0);
-calculator.eval("4 /");
-assertEquals(1, calculator.getValuesStack().size());
-assertEquals(42.0/4.0, calculator.getStackItem(0), 0);
+    // division
+        calculator.eval("clear");
+        calculator.eval("7 12 2 /");
+        assertEquals(7, calculator.getStackItem(0), 0);
+        assertEquals(6, calculator.getStackItem(1), 0);
+        calculator.eval("*");
+        assertEquals(1, calculator.getValuesStack().size());
+        assertEquals(42, calculator.getStackItem(0), 0);
+        calculator.eval("4 /");
+        assertEquals(1, calculator.getValuesStack().size());
+        assertEquals(42.0/4.0, calculator.getStackItem(0), 0);
 
-//multiply
-calculator.eval("clear");
-calculator.eval("1 2 3 4 5");
-calculator.eval("* * * *");
-assertEquals(1, calculator.getValuesStack().size());
-assertEquals(1 * 2 * 3 * 4 * 5, calculator.getStackItem(0), 0);
+    //multiply
+        calculator.eval("clear");
+        calculator.eval("1 2 3 4 5");
+        calculator.eval("* * * *");
+        assertEquals(1, calculator.getValuesStack().size());
+        assertEquals(1 * 2 * 3 * 4 * 5, calculator.getStackItem(0), 0);
 
-}
+   }
 
     @Test
     public void testSqrt() throws Exception {
