@@ -2,10 +2,60 @@ import com.gvnn.rpn.Calculator;
 import com.gvnn.rpn.CalculatorException;
 import org.junit.Test;
 
+import com.gvnn.rpn.To_RPN;
+
 import static org.junit.Assert.assertEquals;
 
 public class CalculatorTest {
-    
+
+    @Test public void convert() throws Exception {
+        Calculator calculator = new Calculator();
+
+        // Счёт
+        calculator.eval(To_RPN.convertaion("4/2-1+2"));
+        assertEquals(3, calculator.getValuesStack().get(0), 0);
+
+        // Запись
+        assertEquals("4 2 / 1 - 2 +", To_RPN.convertaion("4/2-1+2"));
+
+        // Plus
+        // Счёт
+        calculator.eval("clear");
+        calculator.eval(To_RPN.convertaion("1+2"));
+        assertEquals(3, calculator.getValuesStack().get(0), 0);
+
+        // Запись
+        assertEquals("1 2 +", To_RPN.convertaion("1+2"));
+
+        // Minus
+        // Счёт
+        calculator.eval("clear");
+        calculator.eval(To_RPN.convertaion("1-2"));
+        assertEquals(-1, calculator.getValuesStack().get(0), 0);
+
+        // Запись
+        assertEquals("1 2 -", To_RPN.convertaion("1-2"));
+
+        // Multiply
+        // Счёт
+        calculator.eval("clear");
+        calculator.eval(To_RPN.convertaion("5*2"));
+        assertEquals(10, calculator.getValuesStack().get(0), 0);
+
+        // Запись
+        assertEquals("5 2 *", To_RPN.convertaion("5*2"));
+
+        // Division
+        // Счёт
+        calculator.eval("clear");
+        calculator.eval(To_RPN.convertaion("5/2"));
+        assertEquals(2.5, calculator.getValuesStack().get(0), 0);
+
+        // Запись
+        assertEquals("5 2 /", To_RPN.convertaion("5/2"));
+
+    }
+
     @Test
     public void testAritmeticOperators() throws Exception {
         Calculator calculator = new Calculator();
@@ -29,13 +79,13 @@ public class CalculatorTest {
         assertEquals(1, calculator.getValuesStack().size());
         assertEquals(3 - 4, calculator.getStackItem(0), 0);
 
-    // sum
+        // sum
         calculator.eval("clear");
         calculator.eval("2 2 +");
         assertEquals(1, calculator.getValuesStack().size());
         assertEquals(2 + 2, calculator.getStackItem(0), 0);
 
-    // division
+        // division
         calculator.eval("clear");
         calculator.eval("7 12 2 /");
         assertEquals(7, calculator.getStackItem(0), 0);
@@ -45,16 +95,16 @@ public class CalculatorTest {
         assertEquals(42, calculator.getStackItem(0), 0);
         calculator.eval("4 /");
         assertEquals(1, calculator.getValuesStack().size());
-        assertEquals(42.0/4.0, calculator.getStackItem(0), 0);
+        assertEquals(42.0 / 4.0, calculator.getStackItem(0), 0);
 
-    //multiply
+        //multiply
         calculator.eval("clear");
         calculator.eval("1 2 3 4 5");
         calculator.eval("* * * *");
         assertEquals(1, calculator.getValuesStack().size());
         assertEquals(1 * 2 * 3 * 4 * 5, calculator.getStackItem(0), 0);
 
-   }
+    }
 
     @Test
     public void testSqrt() throws Exception {
